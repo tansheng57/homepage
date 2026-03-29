@@ -1,345 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sheng Tan</title>
-  <style>
-    :root {
-      --text: #1f1f1f;
-      --muted: #666;
-      --light: #f7f7f7;
-      --border: #d9d9d9;
-      --link: #00356b;
-      --max-width: 980px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheng Tan</title>
 
-    * {
-      box-sizing: border-box;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #222;
+    line-height: 1.7;
+    background: #fff;
+  }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  .container {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
 
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", Times, serif;
-      color: var(--text);
-      background: #ffffff;
-      line-height: 1.65;
-      font-size: 17px;
-    }
+  header {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+  }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
+  h1 {
+    font-weight: normal;
+    font-size: 2.2rem;
+    margin: 0;
+  }
 
-    a:hover {
-      text-decoration: underline;
-    }
+  nav {
+    margin-top: 8px;
+  }
 
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px 60px;
-    }
+  nav a {
+    margin-right: 18px;
+    text-decoration: none;
+    color: #00356b;
+    font-size: 0.95rem;
+  }
 
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0 14px;
-      margin-bottom: 36px;
-    }
+  nav a:hover {
+    text-decoration: underline;
+  }
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+  .hero {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 40px;
+  }
 
-    .site-title {
-      font-size: 2.2rem;
-      font-weight: 400;
-      margin: 0;
-      letter-spacing: 0.2px;
-    }
+  .hero img {
+    width: 170px;
+  }
 
-    .topnav {
-      font-size: 0.98rem;
-    }
+  .hero-text {
+    flex: 1;
+  }
 
-    .topnav a {
-      margin-left: 18px;
-      color: var(--link);
-    }
+  .buttons a {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #00356b;
+    font-size: 0.9rem;
+  }
 
-    .hero {
-      display: grid;
-      grid-template-columns: 2.2fr 1fr;
-      gap: 40px;
-      margin-bottom: 42px;
-    }
+  .buttons a:hover {
+    background: #f5f5f5;
+  }
 
-    .hero h2 {
-      font-size: 1.15rem;
-      margin: 0 0 14px;
-      font-weight: 600;
-    }
+  section {
+    margin-bottom: 35px;
+  }
 
-    .hero p {
-      margin: 0 0 14px;
-    }
+  h2 {
+    font-size: 1.3rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: normal;
+  }
 
-    .sidebar {
-      font-size: 0.98rem;
-      padding-left: 22px;
-      border-left: 1px solid var(--border);
-    }
+  ol {
+    padding-left: 20px;
+  }
 
-    .sidebar h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.02rem;
-      font-weight: 600;
-    }
+  li {
+    margin-bottom: 14px;
+  }
 
-    .sidebar p {
-      margin: 0 0 10px;
-    }
+  footer {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #666;
+  }
 
-    section {
-      margin-bottom: 42px;
-    }
-
-    section h2 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin: 0 0 16px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pub-list {
-      padding-left: 22px;
-      margin: 0;
-    }
-
-    .pub-list li {
-      margin-bottom: 16px;
-    }
-
-    .note {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding-top: 18px;
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-top: 50px;
-    }
-
-    @media (max-width: 800px) {
-      .hero,
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        border-left: none;
-        padding-left: 0;
-        border-top: 1px solid var(--border);
-        padding-top: 18px;
-      }
-
-      .topnav a {
-        margin-left: 0;
-        margin-right: 16px;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <div class="topbar">
-        <h1 class="site-title">Sheng Tan</h1>
-        <nav class="topnav">
-          <a href=" ">Research</a >
-          <a href="#publications">Publications</a >
-          <a href="#preprints">Preprints</a >
-          <a href="#teaching">Teaching</a >
-          <a href="#links">Links</a >
-        </nav>
-      </div>
-    </header>
+<div class="container">
 
-    <main>
-      <section class="hero">
-        <div>
-          <h2>About</h2>
-          <p>
-            I am a Lecturer in the School of Mathematical Sciences at Capital Normal University.
-            Before joining Capital Normal University in October 2025, I was a postdoctoral researcher
-            at the Beijing Institute of Mathematical Sciences and Applications, where I worked with
-            Professors Zhengwei Liu and Jinsong Wu.
-          </p >
-          <p>
-            I received my PhD from Purdue University in May 2023 under the supervision of
-            Professor Uli Walther. I was initially trained in algebraic geometry, and my research
-            interests later evolved toward mathematical physics.
-          </p >
-          <p>
-            My work lies at the interface of mathematical physics and algebra, with particular
-            interests in topological quantum field theory, tensor categories, and related structures
-            arising in topological phases and lattice models.
-          </p >
-        </div>
+<header>
+  <h1>Sheng Tan</h1>
+  <nav>
+    <a href=" ">Research</a >
+    <a href="#publications">Publications</a >
+    <a href="#links">Links</a >
+  </nav>
+</header>
 
-        <aside class="sidebar">
-          <h3>Contact</h3>
-          <p><strong>Email:</strong><br>
-            <a href="mailto:tansheng2018@outlook.com">tansheng2018 at outlook dot com</a >
-          </p >
+<!-- HERO -->
+<section class="hero">
 
-          <p><strong>Affiliation:</strong><br>
-            Capital Normal University
-          </p >
+  <!-- 左侧头像 -->
+  <div>
+    < img src="profile.jpg" alt="Sheng Tan">
+  </div>
 
-          <p><strong>Research Areas:</strong><br>
-            Mathematical Physics<br>
-            TQFT<br>
-            Tensor Categories<br>
-            Algebraic Geometry
-          </p >
-        </aside>
-      </section>
+  <!-- 右侧介绍 -->
+  <div class="hero-text">
 
-      <section id="research">
-        <h2>Research</h2>
-        <p>
-          Broadly speaking, I am interested in the mathematical structures underlying topological
-          phases of matter and quantum field theory. My recent work focuses on quantum double
-          models, weak Hopf symmetry, tube algebras, and related categorical constructions.
-        </p >
-        <p>
-          I also maintain a background interest in algebraic geometry, especially as part of my
-          earlier mathematical training.
-        </p >
-      </section>
+    <p>
+      I am a Lecturer at Capital Normal University.
+      Previously, I was a postdoctoral researcher at the Beijing Institute of Mathematical Sciences and Applications,
+      working with Professors Zhengwei Liu and Jinsong Wu.
+    </p >
 
-      <section id="publications">
-        <h2>Publications</h2>
-        <ol class="pub-list">
-          <li>
-            Zhian Jia and <strong>Sheng Tan</strong>, 
-            “Weak Hopf tube algebra for domain walls between 2d gapped phases of Turaev-Viro TQFTs,”
-            <em>Journal of High Energy Physics</em> <strong>11</strong> (2025), 018.
-            <a href="https://arxiv.org/abs/2507.01515" target="_blank" rel="noopener noreferrer">[arXiv]</a >
-          </li>
+    <p>
+      I received my PhD from Purdue University in May 2023 under the supervision of Professor Uli Walther.
+      I was initially trained in algebraic geometry, and my research interests later evolved toward mathematical physics.
+    </p >
 
-          <li>
-            Lu Wei, Zhian Jia, Dagomir Kaszlikowski, and <strong>Sheng Tan</strong>,
-            “Antilinear superoperator and quantum geometric invariance for higher dimensional quantum systems,”
-            <em>Quantum Information Processing</em> <strong>23</strong> (2024), 290.
-            <a href="https://arxiv.org/abs/2202.10989" target="_blank" rel="noopener noreferrer">[arXiv]</a >
-          </li>
+    <p>
+      My research lies at the interface of mathematical physics and algebra,
+      particularly in topological quantum field theory, tensor categories, and topological phases.
+    </p >
 
-          <li>
-            Zhian Jia, <strong>Sheng Tan</strong>, and Dagomir Kaszlikowski,
-            “Weak Hopf symmetry and tube algebra of the generalized multifusion string-net model,”
-            <em>Journal of High Energy Physics</em> <strong>07</strong> (2024), 207.
-            <a href="https://arxiv.org/abs/2403.04446" target="_blank" rel="noopener noreferrer">[arXiv]</a >
-          </li>
+    <!-- 按钮 -->
+    <div class="buttons">
+      <a href="CV.pdf" target="_blank">CV</a >
+      <a href="https://arxiv.org/search/?searchtype=author&query=Tan%2C+S" target="_blank">arXiv</a >
+      <a href="https://scholar.google.com" target="_blank">Google Scholar</a >
+    </div>
 
-          <li>
-            Zhian Jia, Dagomir Kaszlikowski, and <strong>Sheng Tan</strong>,
-            “Electric-magnetic duality and Z2 symmetry enriched Abelian lattice gauge theory,”
-            <em>Journal of Physics A</em> <strong>57</strong> (2024), 255203.
-            <a href="https://arxiv.org/abs/2201.12361" target="_blank" rel="noopener noreferrer">[arXiv]</a >
-          </li>
-
-          <li>
-            Zhian Jia, <strong>Sheng Tan</strong>, Dagomir Kaszlikowski, and Liang Chang,
-            “On weak Hopf symmetry and weak Hopf quantum double model,”
-            <em>Communications in Mathematical Physics</em> <strong>402</strong> (2023), 3045–3107.
-            <a href="https://arxiv.org/abs/2302.08131" target="_blank" rel="noopener noreferrer">[arXiv]</a >
-          </li>
-
-          <li>
-            Zhian Jia, Dagomir Kaszlikowski, and <strong>Sheng Tan</strong>,
-            “Boundary and domain wall theories of 2d generalized quantum double model,”
-            <em>Journal of High Energy Physics</em> <strong>07</strong> (2023), 160.
-            <a href="https://arxiv.org/abs/2207.03970" target="_blank" rel="noopener noreferrer">[arXiv]</a >
-          </li>
-        </ol>
-      </section>
-
-      <section id="preprints">
-        <h2>Preprints</h2>
-        <ol class="pub-list">
-          <li>
-            Shiyu Cao, Zhian Jia, and <strong>Sheng Tan</strong>,
-            “Topological quantum color code model on infinite lattice,”
-            preprint (2026).
-            <a href="https://arxiv.org/abs/2601.12409" target="_blank" rel="noopener noreferrer">[arXiv]</a >
-          </li>
-        </ol>
-      </section>
-
-      <section class="two-col">
-        <div id="teaching">
-          <h2>Teaching</h2>
-          <p class="note">
-            You may later list courses, lecture notes, or teaching materials here.
-          </p >
-          <p>
-            Example entries:
-          </p >
-          <ul>
-            <li>Linear Algebra</li>
-            <li>Abstract Algebra</li>
-            <li>Topics in Mathematical Physics</li>
-          </ul>
-        </div>
-
-        <div id="links">
-          <h2>Links</h2>
-          <ul>
-            <li><a href="http://arxiv.org/a/tan_s_2" target="_blank" rel="noopener noreferrer">arXiv author page</a ></li>
-            <li><a href="https://www.bimsa.cn/" target="_blank" rel="noopener noreferrer">BIMSA</a ></li>
-            <li><a href="https://polyidoit.github.io/jia/index.html" target="_blank" rel="noopener noreferrer">Zhian Jia</a ></li>
-            <li><a href="https://clementdelcamp.com/digest" target="_blank" rel="noopener noreferrer">TQFT Digest</a ></li>
-          </ul>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>
-        The days are long but the years are short.
-      </p>
-
-      <p style="margin-top:10px;">
-        <a href="https://info.flagcounter.com/CUMF" target="_blank">
-          <img src="https://s11.flagcounter.com/count2/CUMF/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_0/pageviews_1/flags_0/percent_0/"
-           alt="Flag Counter"
-           border="0">
-        </a>
-      </p>
-    </footer>
+    <p style="margin-top:10px;">
+      <strong>Email:</strong> 
+      <a href="mailto:tansheng2018@outlook.com">tansheng2018@outlook.com</a >
+    </p >
 
   </div>
+
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <h2>Research</h2>
+  <p>
+    I study mathematical structures arising in topological quantum field theory and quantum many-body systems,
+    including quantum double models, weak Hopf symmetry, and tensor categorical methods.
+  </p >
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <h2>Publications</h2>
+  <ol>
+
+    <li>
+      Zhian Jia and <strong>Sheng Tan</strong>, 
+      <em>Weak Hopf tube algebra for domain walls between 2d gapped phases of Turaev-Viro TQFTs</em>,
+      JHEP 11 (2025).
+    </li>
+
+    <li>
+      Zhian Jia, <strong>Sheng Tan</strong>, Dagomir Kaszlikowski,
+      <em>Weak Hopf symmetry and tube algebra of generalized string-net models</em>,
+      JHEP 07 (2024).
+    </li>
+
+    <li>
+      Zhian Jia et al., <strong>Sheng Tan</strong>,
+      <em>Weak Hopf quantum double model</em>,
+      CMP (2023).
+    </li>
+
+  </ol>
+</section>
+
+<!-- LINKS -->
+<section id="links">
+  <h2>Links</h2>
+  <ul>
+    <li><a href="https://www.bimsa.cn/" target="_blank">BIMSA</a ></li>
+    <li><a href="https://polyidoit.github.io/" target="_blank">Zhian Jia</a ></li>
+  </ul>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>The days are long but the years are short.</p >
+
+  <!-- Flag counter -->
+  <a href="https://info.flagcounter.com/CUMF" target="_blank">
+    < img src="https://s11.flagcounter.com/count2/CUMF/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_0/pageviews_1/flags_0/percent_0/"
+         alt="Flag Counter">
+  </a >
+</footer>
+
+</div>
 </body>
 </html>
