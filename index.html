@@ -151,6 +151,12 @@
       margin-top: 50px;
     }
 
+   .last-update {
+      margin-top: 30px;
+      color: #999;
+      font-size: 0.85rem;
+    }
+
     @media (max-width: 800px) {
       .hero,
       .two-col {
@@ -380,14 +386,45 @@
       </section>
      
       <p class="last-update">
-        Last updated: <span id="last-update"></span>
+        Last updated: <span id="last-update">Loading...</span>
       </p>
 
       <script>
-        const d = new Date();
-        const options = { year: 'numeric', month: 'long' };
-        document.getElementById("last-update").textContent =
-          d.toLocaleDateString('en-US', options);
+        async function fetchLastUpdate() {
+          const username = "tansheng57";
+          const repo = "tansheng57.github.io";
+      
+          const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+      
+          try {
+            const res = await fetch(url);
+            const data = await res.json();
+      
+            const date = new Date(data[0].commit.committer.date);
+      
+            function getOrdinal(n) {
+              if (n % 100 >= 11 && n % 100 <= 13) return n + "th";
+              switch (n % 10) {
+                case 1: return n + "st";
+                case 2: return n + "nd";
+                case 3: return n + "rd";
+                default: return n + "th";
+              }
+            }
+      
+            const day = getOrdinal(date.getDate());
+            const month = date.toLocaleString('en-US', { month: 'long' });
+            const year = date.getFullYear();
+      
+            document.getElementById("last-update").textContent =
+              `${day} ${month} ${year}`;
+          } catch (error) {
+            document.getElementById("last-update").textContent =
+              "Unavailable";
+          }
+        }
+      
+        fetchLastUpdate();
       </script>
     </main>
 
