@@ -378,6 +378,17 @@
       
         </div>
       </section>
+     
+      <p class="last-update">
+        Last updated: <span id="last-update"></span>
+      </p>
+
+      <script>
+        const d = new Date();
+        const options = { year: 'numeric', month: 'long' };
+        document.getElementById("last-update").textContent =
+          d.toLocaleDateString('en-US', options);
+      </script>
     </main>
 
     <!-- <footer>
