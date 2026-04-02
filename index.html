@@ -389,7 +389,7 @@
         Last updated: <span id="last-update">Loading...</span>
       </p> -->
 
-      <p class="last-update">
+      <!-- <p class="last-update">
         © <span id="year"></span> Sheng Tan · Last updated: <span id="last-update">Loading...</span>
       </p>
       
@@ -433,6 +433,34 @@
         }
       
         fetchLastUpdate();
+      </script> -->
+      <p class="last-update">
+        © <span id="year"></span> Sheng Tan · Last updated: <span id="last-update"></span>
+      </p>
+      
+      <script>
+        // 自动年份
+        document.getElementById("year").textContent = new Date().getFullYear();
+      
+        // 获取页面最后修改时间
+        const d = new Date(document.lastModified);
+      
+        function getOrdinal(n) {
+          if (n % 100 >= 11 && n % 100 <= 13) return n + "th";
+          switch (n % 10) {
+            case 1: return n + "st";
+            case 2: return n + "nd";
+            case 3: return n + "rd";
+            default: return n + "th";
+          }
+        }
+      
+        const day = getOrdinal(d.getDate());
+        const month = d.toLocaleString('en-US', { month: 'long' });
+        const year = d.getFullYear();
+      
+        document.getElementById("last-update").textContent =
+          `${day} ${month} ${year}`;
       </script>
     </main>
 
